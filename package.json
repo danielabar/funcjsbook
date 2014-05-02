@@ -1,0 +1,28 @@
+{
+  "name": "funcjsbook",
+  "version": "0.0.0",
+  "description": "Learning functional JavaScript with O'Reilly book",
+  "main": "index.js",
+  "watch": {
+    "lint": "*.js"
+  },
+  "scripts": {
+    "lint": "jshint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm-watch"
+  },
+  "keywords": [
+    "functional",
+    "javascript",
+    "underscore"
+  ],
+  "author": "danielabar",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {
+    "jshint": "~2.5.0",
+    "npm-watch": "0.0.0"
+  }
+}
