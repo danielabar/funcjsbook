@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('underscore');
 
 var library = [
@@ -25,7 +27,7 @@ var construct = function(head, tail) {
 
 var sqlProject = function(table, keys) {
   return _.map(table, function(obj) {
-    results = _.pick.apply(null, construct(obj, keys));
+    var results = _.pick.apply(null, construct(obj, keys));
     console.log(JSON.stringify(results, null, 2));
     return results;
   });
