@@ -41,7 +41,7 @@ describe('Table Like', function() {
     });
   });
   describe('Rename', function() {
-    it.only('Renames object keys', function() {
+    it('Renames object keys', function() {
       var obj = {a: 1, b: 2};
       var newNames = {AAA: 1};
       var result = fixture.rename(obj, newNames);
