@@ -42,4 +42,42 @@ describe.only('Closures', function() {
     expect(result).to.equal(3);
   });
 
+  it('Complement returns an inverse function', function() {
+    var isEven = function(n) { return (n % 2) === 0; };
+    var isOdd = fixture.complement(isEven);
+    expect(isOdd(2)).to.be.false;
+    expect(isOdd(413)).to.be.true;
+    expect(isOdd(10)).to.be.false;
+  });
+
+  it('Complement retains ref to original PRED even if it changes later', function() {
+    var isEven = function(n) { return (n % 2) === 0; };
+    var isOdd = fixture.complement(isEven);
+    expect(isOdd(2)).to.be.false;
+    expect(isOdd(413)).to.be.true;
+
+    isEven = function(n) {
+      var makeJsLintHappy = n;
+      console.log('makeJsLintHappy: ' + makeJsLintHappy);
+      return false;
+    };
+    expect(isOdd(13)).to.be.true;
+    expect(isOdd(12)).to.be.false;
+  });
+
+  it('Show object', function() {
+    var o = {a: 42};
+    var show = fixture.showObject(o);
+    expect(show()).to.deep.equal({a: 42});
+  });
+
+  it('Problem with show object', function(){
+    var o = {a: 42};
+    var show = fixture.showObject(o);
+    expect(show()).to.deep.equal({a: 42});
+
+    o.newField = 108;
+    expect(show()).to.deep.equal({a: 42, newField: 108});
+  });
+
 });
