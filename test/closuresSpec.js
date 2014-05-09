@@ -71,13 +71,31 @@ describe.only('Closures', function() {
     expect(show()).to.deep.equal({a: 42});
   });
 
-  it('Problem with show object', function(){
+  it('Problem with show object', function() {
     var o = {a: 42};
     var show = fixture.showObject(o);
     expect(show()).to.deep.equal({a: 42});
 
     o.newField = 108;
     expect(show()).to.deep.equal({a: 42, newField: 108});
+  });
+
+  it('Plucker works with objects', function() {
+    var best = {title: 'Infinite Jest', author: 'DFW'};
+    var getTitle = fixture.plucker('title');
+    var result = getTitle(best);
+    expect(result).to.equal('Infinite Jest');
+  });
+
+  it('Plucker works with arrays', function() {
+    var books = [
+      {title: 'Chthon'},
+      {stars: 5},
+      {title: 'Botchan'}
+    ];
+    var getThird = fixture.plucker(2);
+    var result = getThird(books);
+    expect(result).to.deep.equal({title: 'Botchan'});
   });
 
 });
